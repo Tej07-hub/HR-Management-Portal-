@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" th:replace="~{user-base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+  <h1></h1>
+ 
+  <div class="row">
+  
+  
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+            <b>Development [<span th:text="${devCount}">0</span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+             <b>QA Testing [<span th:text="${qaCount}">0</span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+            <b>Networking [<span th:text="${networkCount}">0</span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+             <b>HR Team [<span th:text="${hrCount}">0</span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+             <b>Security [<span th:text="${securityCount}">0</span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+            <b>Sales Market [<span th:text="${salesCount}">0</span>]</b>
+           </div>
+          </div>
+      </div>
+  
+  
+  </div>
+  
+  <div class="row">
+  
+  
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-warning">
+             <b>Pending [<span th:text="${userpendingCount}">0</span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-success">
+             <b style="color: white;">Approved [<span th:text="${userapprovedCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-info">
+             <b style="color: white;">Canceled [<span th:text="${usercanceledCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-danger">
+             <b style="color: white;">Denied [<span th:text="${userdeniedCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-primary">
+             <b style="color: white;">All [<span th:text="${userallCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-secondary">
+             <b style="color: white;">Reminder [<span th:text="${userallCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+  
+  
+  </div>
+  <!-- End Above Status -->
+  
+  
+  <div class="row mb-5">
+     
+     <div class="col-md-8 mt-3">
+       
+         <div class="card">
+            <div class="card-body">
+              <h5>Recent Activity</h5>
+              <hr>
+               <table  class="table" style="width:100%">
+        <thead>
+			<tr th:each="e,i : ${myStatusList}">
+			    <td th:text="${i.index + 1}"></td>
+			    <td th:text="${e.subject}"></td>
+			    <td th:text="${e.text}"></td>
+			    <td th:text="${e.addedDate}"></td>
+			    <td th:text="${e.status}"></td>
+			</tr>
+        </thead>
+		<tbody>
+			<tr th:each="p, i : ${recentPosts}">
+			    <td th:text="${i.index + 1}"></td>
+			    <td th:text="${p.title}"></td>
+			    <td th:text="${p.comment}"></td>
+			    <td th:text="${p.addedDate}"></td>
+			    <td><span class="badge bg-info">HR Post</span></td>
+			</tr>
+
+		   <tr th:if="${#lists.isEmpty(recentPosts)}">
+		        <td colspan="5" class="text-center text-muted">
+		            No recent announcements
+		        </td>
+		   </tr>
+		</tbody>
+    </table>
+            </div>
+         </div>
+
+     </div>
+     
+     <div class="col-md-4 mt-3">
+      <div class="card">
+      	<div class="card-body">
+      	 <h5>Up Coming Birthday, Anniversary</h5>
+      	 <hr>
+		 <div th:each="emp : ${birthdayList}"
+		      class="d-flex justify-content-around w-100 mt-2">
+
+		     <b th:text="${emp.employeeName}"></b>
+		     <i class="fa-solid fa-cake-candles" style="color:red"></i>
+		     <span th:text="${emp.dateOfBirth}"></span>
+
+		 </div>
+
+      	 
+      	</div>
+      </div>
+     </div>
+     
+  </div>
+  
+  
+</section>
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

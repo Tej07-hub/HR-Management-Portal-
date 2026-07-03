@@ -1,0 +1,40 @@
+.sidebar{
+	height: 100vh;
+	top: 60px;
+	position: relative;
+	left: 0;
+	/* background-color: #f2f3f4; */
+	z-index: 100;
+	overflow-y: auto; 
+}
+
+.sidebar a{
+	padding: 10px 15px;
+	text-decoration: none;
+	display: block;
+	color:white;
+	font-weight: 600;
+	
+}
+
+.sidebar a span{
+	padding-left: 10px;
+}
+
+.sidebar a:hover{
+	background-color: #ddd;
+}
+
+.btn.bg-secondary {
+    background-color: #000 !important;   /* black */
+    color: #fff !important;               /* white text */
+    border-radius: 25px;                  /* curved button */
+    padding: 8px 30px;
+    border: none;
+}
+
+.btn.bg-secondary:hover {
+    background-color: #111 !important;
+    color: #fff !important;
+}
+

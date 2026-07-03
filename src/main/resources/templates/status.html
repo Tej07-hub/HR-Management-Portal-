@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Status</title>
+</head>
+
+<body>
+<section>
+
+<div class="container mt-5">
+    <table id="example" class="display nowrap" style="width:100%">
+        <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Subject</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="e : ${statusList}">
+            <td th:text="${e.id}"></td>
+            <td th:text="${e.empName}"></td>
+            <td th:text="${e.position}"></td>
+            <td th:text="${e.subject}"></td>
+            <td th:text="${e.text}"></td>
+            <td th:text="${e.addedDate}"></td>
+
+            <!-- ACTION COLUMN -->
+            <td style="cursor:pointer">
+
+                <!-- SHOW ICONS WHEN PENDING -->
+                <span th:if="${#strings.equalsIgnoreCase(e.status,'PENDING')}">
+                    <i th:onclick="|approved(${e.id}, 'APPROVE')|"
+                       class="fas fa-check-circle"
+                       style="color:green;font-size:18px"
+                       title="Approve"></i>
+
+                    <i th:onclick="|approved(${e.id}, 'DENIED')|"
+                       class="fas fa-times-circle"
+                       style="color:red;font-size:18px;margin-left:10px"
+                       title="Denied"></i>
+
+                    <i th:onclick="|approved(${e.id}, 'CANCELED')|"
+                       class="fas fa-ban"
+                       style="color:#f1c40f;font-size:18px;margin-left:10px"
+                       title="Canceled"></i>
+                </span>
+
+                <!-- SHOW STATUS TEXT OTHERWISE -->
+                <span th:unless="${#strings.equalsIgnoreCase(e.status,'PENDING')}">
+                    <b th:text="${e.status}"></b>
+                </span>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</section>
+</body>
+</html>

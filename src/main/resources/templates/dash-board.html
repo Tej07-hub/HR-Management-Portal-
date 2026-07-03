@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+  <h1></h1>
+ 
+  <div class="row">
+  
+  
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+			<b>Development [<span th:text="${devCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+             <b>QA Testing [<span th:text="${qaCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+             <b>Networking [<span th:text="${networkCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+             <b>HR Team [<span th:text="${hrCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+             <b>Security [<span th:text="${securityCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body">
+             <b>Sales Market [<span th:text="${salesCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+  
+  
+  </div>
+  
+  <div class="row">
+  
+  
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-warning">
+             <b>Pending [<span th:text="${pendingCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-success">
+             <b style="color: white;">Approved [<span th:text="${approvedCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-info">
+             <b style="color: white;">Canceled [<span th:text="${canceledCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-danger">
+             <b style="color: white;">Denied [<span th:text="${deniedCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-primary">
+             <b style="color: white;">All [<span th:text="${allCount}"></span>]</b>
+           </div>
+          </div>
+      </div>
+      
+      <div class="col-6 col-sm-2 mt-2">
+          <div class="card" style="cursor: pointer;">
+           <div class="card-body bg-secondary">
+             <b style="color: white;">Remainder [1]</b>
+           </div>
+          </div>
+      </div>
+  
+  
+  </div>
+  <!-- End Above Status -->
+  
+  
+  <div class="row mb-5">
+     
+     <div class="col-md-8 mt-3">
+       
+         <div class="card">
+            <div class="card-body">
+              <h5>Recent Activity</h5>
+              <hr>
+               <table  class="table" style="width:100%">
+				<thead>
+				       <tr>
+				           <th>S.No</th>
+				           <th>Subject</th>
+				           <th>Text</th>
+				           <th>Status</th>
+				       </tr>
+				       </thead>
+					   <tbody>
+			<tr th:each="c : ${recentList}">
+			    <td th:text="${c.id}"></td>
+			    <td th:text="${c.subject}"></td>
+			    <td th:text="${c.text}"></td>
+			    <td th:text="${c.status}"></td>
+			</tr>
+        
+			</tbody>
+    </table>
+            </div>
+         </div>
+
+     </div>
+     
+     <div class="col-md-4 mt-3">
+      <div class="card">
+      	<div class="card-body">
+      	 <h5>Up Coming Birthday, Anniversary</h5>
+      	 <hr>
+		 <div th:each="e : ${birthdayList}"
+		      class="d-flex justify-content-around w-100 mt-2">
+		     <b th:text="${e.employeeName}"></b>
+		     <i class="fa-solid fa-cake-candles" style="color:red"></i>
+		     <span th:text="${e.dateOfBirth}"></span>
+		 </div>
+
+      	 
+      	</div>
+      </div>
+     </div>
+     
+  </div>
+  
+  
+</section>
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
